@@ -1,0 +1,155 @@
+.background-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  display: block;
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.search-box {
+	margin: 100px auto;
+	position: absolute;
+	width: 100%;
+	padding: 5%;
+	background-color: rgba(166, 75, 154, .7);
+	box-shadow: 3px 3px 5px rgba(166, 75, 154, 1);
+}
+.caption {
+	margin-bottom:30px;
+	color: white;
+}
+.loginForm input[type=text], 
+.loginForm input[type=password] {
+	margin-bottom:10px;
+	background: transparent;
+	border: 0;
+	outline: 0;
+	border-bottom: 2px solid white;
+	padding: 20px 35px;
+	font-size: 20px;
+	color: white;
+	box-shadow: none;
+}
+
+.input-group {
+	width: 100%;
+}
+
+.input-group:nth-child(1)::before {
+	font-family: "FontAwesome";
+	content: "\f007";
+	position: absolute;
+	font-size: 25px;
+	padding: 5px;
+	color: white;
+}
+
+.input-group:nth-child(2)::before {
+	font-family: "FontAwesome";
+	content: "\f023";
+	position: absolute;
+	font-size: 25px;
+	padding: 5px;
+	color: white;
+}
+
+.loginForm input[type=text]::-webkit-input-placeholder,
+.loginForm input[type=password]::-webkit-input-placeholder{ 
+   color: white;
+}
+.loginForm input[type=text]::-moz-placeholder,
+.loginForm input[type=password]::-moz-placeholder { 
+   color: white;
+}
+.loginForm input[type=text]::-ms-input-placeholder,
+.loginForm input[type=password]::-ms-input-placeholder { 
+   color: white;
+}
+
+.loginForm input[type=submit]{
+	margin-top: 20px;
+	height: 50px;
+	color: white;
+	border: 2px solid white;
+	background: transparent;
+	font-size: 20px;
+}
+
+.loginForm input[type=submit]:hover {
+	background:rgba(166, 75, 154, 1);
+}
+
+#uname_info {
+	background: rgba(166, 75, 154, 1) none repeat scroll 0 0;
+	color: #fff;
+	left: 20px;
+	position: absolute;
+	top: 220px;
+	padding: 10px 10px 10px 30px;
+}
+
+#pswd_info {
+	background: rgba(166, 75, 154, 1) none repeat scroll 0 0;
+	color: #fff;
+	left: 20px;
+	position: absolute;
+	top: 275px;
+	padding: 10px 10px 10px 30px;
+}
+
+#pswd_info::before,
+#uname_info::before {
+    background: rgba(166, 75, 154, 1) none repeat scroll 0 0;
+    content: "";
+    height: 25px;
+    left: -13px;
+    margin-top: -12.5px;
+    position: absolute;
+    top: 50%;
+    transform: rotate(45deg);
+    width: 25px;
+}
+#pswd_info, #uname_info {
+    display:none;
+}
+
+.form-footer {
+	color: white;
+	text-align: center;
+}
+
+.btn-link, .btn-link:hover, .btn-link:focus, .modal-content {
+	color: white;
+}
+
+.btn-link:focus {
+	text-decoration: none;
+}
+
+.modal-header {
+	background-color: rgba(166, 75, 154, 1);
+}
+
+.modal-body {
+	background-color: rgba(166, 75, 154, .8);
+}
+
+.modal-body ol {
+	font-size: 20px;
+}
+
+button.close {
+	font-size: 50px;
+}
