@@ -1,27 +1,27 @@
-<?php 
+<?php
 	$progress_bem 	= round($bem_sudah/$bem_total, 2)*100;
 	$progress_senat = round($senat_sudah/$senat_total, 2)*100;
 	$progress_15 	= round($sudah15/$total15, 2)*100;
 	$progress_16 	= round($sudah16/$total16, 2)*100;
 	$progress_17 	= round($sudah17/$total17, 2)*100;
-	
+
 	function progress($val)
 	{
 		$ret = '';
 		switch ($val) {
 			case ($val >= 50 && $val < 75):
-				$ret = 'warning'; 
+				$ret = 'warning';
 				break;
 			case ($val > 75):
-				$ret = 'success'; 
+				$ret = 'success';
 				break;
 			default:
-				$ret = 'warning'; 
+				$ret = 'warning';
 				break;
 		}
 
 		return $ret;
-	} 
+	}
 
 ?>
 
@@ -31,7 +31,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="refresh" content="1; URL=http://localhost/pemiltas/monitoring">
+  <meta http-equiv="refresh" content="1; URL="<?= base_url('/monitoring')  ?>">
   <title>Pemiltas FKM | Monitoring</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -42,7 +42,7 @@
   <!-- External css -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/userlayout.css">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/monitoring.css">
-  
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>

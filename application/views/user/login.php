@@ -58,7 +58,7 @@
 		</div>
 	</div>
 	<div class="row">
-		
+
 	</div>
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
@@ -84,7 +84,7 @@
 	  </div>
 	</div>
 </div>
-  
+
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url();?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -92,7 +92,7 @@
 <script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
-	
+
 	$('input[type=password]').focus(function() {
 		$('#pswd_info').show();
 		$(this).data('placeholder',$(this).attr('placeholder'))
@@ -110,7 +110,7 @@ $(document).ready(function(){
 		$('#uname_info').hide();
 		$(this).attr('placeholder',$(this).data('placeholder'));
 	});
-	
+
 });
 </script>
 </body>
