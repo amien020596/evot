@@ -1,10 +1,8 @@
 <?php 
-  $this_angkatan = strval(date('Y')-2);
-  $kandidat = $this->Admin_model->get_jml_kandidat_senat();
   $warna = array('#e74c3c', '#27ae60', '#e67e22', '#3498db', '#9b59b6', '#34495e', '#bdc3c7', '#f39c12');
-  for ($i=1; $i <= $xkandidat_senat15; $i++) { 
-    $suara = $this->Admin_model->hitung_senat($i, "2015");
-    $chart_15[] = array(
+  for ($i=1; $i <= $xkandidat_senat; $i++) { 
+    $suara = $this->Admin_model->hitung_senat($i, $angkatan);
+    $chart[] = array(
       'label' => "Kandidat $i",
       'data'  => $suara,
       'color' => $warna[$i-1]
@@ -16,28 +14,32 @@
 <section class="content">
 
       <div class="row">
-        <div class="col-md-12">
-        <!-- Donut chart -->
-        <div class="box box-primary">
-            <div class="box-header with-border">
-              <i class="fa fa-pie-chart" aria-hidden="true"></i>
-              <h3 class="box-title">Grafik Perolehan Suara BEM</h3>
-            </div>
-            <div class="box-body">
-                <div id="donut-senat15" style="height: 300px;"></div>
-            </div>
-            <!-- /.box-body-->
+      <div class="col-md-12">
+      <!-- Donut chart -->
+      <div class="box box-primary">
+          <div class="box-header with-border">
+            <i class="fa fa-pie-chart" aria-hidden="true"></i>
+            <h3 class="box-title">Grafik Perolehan Suara Senat Angkatan <?=$angkatan?></h3>
           </div>
-          <!-- /.box -->
+          <div class="box-body">
+              <div id="donut-senat" style="height: 300px;"></div>
+          </div>
+          <!-- /.box-body-->
         </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+
+      <!-- /.col -->
       </div>
       <!-- /.row -->
-
+      
       <div class="row">
-      <div class="col-md-12">
+
+        <div class="col-md-12">
         <div class="box">
             <div class="box-header">
-              <h1 class="box-title"><i class="fa fa-database" aria-hidden="true"></i> Tabel Rekapitulasi Suara Senat Angkatan 2015</h1>
+              <h1 class="box-title"><i class="fa fa-database" aria-hidden="true"></i> Tabel Rekapitulasi Suara Senat Angkatan <?=$angkatan?></h1>
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
@@ -49,19 +51,20 @@
               </tr>
               <?php 
                 $this->load->model('Admin_model');
-                for ($i= 1; $i <= $xkandidat_senat15; $i++) {
-                  $r = $this->Admin_model->get_data_kandidat_senat($i, "2015"); 
-                  $e = $this->Admin_model->hitung_senat($i, "2015");
+                for ($i= 1; $i <= $xkandidat_senat; $i++) {
+                  $r = $this->Admin_model->get_data_kandidat_senat($i, $angkatan); 
+                  $e = $this->Admin_model->hitung_senat($i, $angkatan);
               ?>
                 <tr>
                   <td class="text-center bigger"><?php echo $r->no_urut; ?></td>
                   <td class="foto">
                       <ul class="foto_paslon">
-                        <li><img src="<?php echo base_url('assets');?>/img/senat/2015/senat<?php echo $r->no_urut;?>.png" style="width:40px"></li>
+                        <!-- <li><img src="<?php echo base_url('assets');?>/img/senat/<?php echo $angkatan."_senat".$r->no_urut;?>.png" style="width:40px"></li> -->
+                        <li><img src="<?=base_url('assets/img/senat/').$r->foto?>" alt=""></li>
                       </ul>
                   </td>
                   <td class="nama-senat"><?php echo "$r->nama_kandidat";?></td>
-                  <td class="text-center bigger"><?php echo "$e / $senat_sudah15"; ?></td>
+                  <td class="text-center bigger"><?php echo "$e / $senat_sudah"; ?></td>
                 </tr>
                 <?php } ?>
               </table>
@@ -71,12 +74,16 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
+
+        
+        <!-- /.col -->
+      </div>
       </div>
 
     </section>
     <!-- /.content -->
-    
-  </div>
+
+    </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
@@ -111,9 +118,10 @@
 <!-- Page script -->
 <script>
   $(function () {
-    var donut15 = <?php echo json_encode($chart_15); ?>;
 
-    $.plot("#donut-senat15", donut15, {
+    var donut = <?php echo json_encode($chart); ?>;
+    
+    $.plot("#donut-senat", donut, {
       series: {
         pie: {
           show: true,
@@ -132,6 +140,7 @@
         show: false
       }
     });
+
   });
 
   function labelFormatter(label, series) {

@@ -38,6 +38,8 @@
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -45,14 +47,16 @@
 	      </div>
 	      <div class="modal-body">
 	        <ol>
-			  <li>Log in terlebih dahulu dengan memasukkan NIM dan token yang telah diberi oleh panitia. Klik Submit</li>
-			  <li>Pilih Ketua dan Wakil Ketua BEM dengan cara klik button Pilih yang telah disediakan</li>
-			  <li>Pilih Senator Angkatan dengan cara klik button Pilih yang telah disediakan (Pemilihan Senator Angkatan hanya bisa dilakukan oleh angkatan 2015, 2016, 2017)</li>
-			  <li>Setelah itu muncul halaman summary. Klik Selesai jika sudah yakin dengan pilihan, dan Ulangi jika belum yakin</li>
-			  <li>Dan suara anda telah berhasil masuk</li>
+			  <li><b>Log in</b> terlebih dahulu dengan memasukkan <b>NIM</b> dan <b>token</b> yang telah diberi oleh panitia</li>
+			  <li>Pilih Ketua dan Wakil Ketua BEM dengan cara klik pada nomor urut pasangan calon yang telah disediakan. Pilih Lanjut</li>
+			  <li>Pilih Senator Angkatan dengan cara klik pada nomor urut calon (Pemilihan Senator Angkatan hanya bisa dilakukan oleh angkatan <?=date('Y')-2;?>, <?=date('Y')-1;?>, <?=date('Y');?>). Pilih Lanjut</li>
+			  <li>Pada halaman <i>summary</i> akan tampil paslon BEM dan senator yang telah Anda pilih. Klik <b>Simpan</b> jika sudah yakin dengan pilihan, atau <b>Ulangi Vote</b> jika belum yakin</li>
+			  <li>Suara Anda akan terhitung setelah Anda menekan tombol <b>Simpan</b>.</li>
+			  <li>Klik tombol <b>Lanjutkan</b> pada halaman akhir untuk keluar <b>Log out</b></li>
 			</ol>
 	      </div>
 	    </div>
+
 	  </div>
 	</div>
 

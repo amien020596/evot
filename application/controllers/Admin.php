@@ -6,7 +6,7 @@ class Admin extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('Admin_model');
-    $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
+		$this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
 		$this->output->set_header("Pragma: no-cache");
 
         $this->load->model('Auth');
@@ -42,11 +42,17 @@ class Admin extends CI_Controller {
 	// }
 	public function daftar_pemilih(){
 		$data['pemilih'] = $this->Admin_model->daftar_pemilih(); 
+		$data['title'] = "Daftar Pemilih";
+		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/daftar_pemilih',$data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 	public function add_pemilih(){
 		$data['error'] = validation_errors();
+		$data['title'] = "Tambah Pemilih";
+		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/add-pemilih',$data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 	public function valid_pemilih(){
 		$this->form_validation->set_rules('nim','NIM','xss_clean|trim|required|numeric|max_length[15]');
@@ -78,7 +84,10 @@ class Admin extends CI_Controller {
 	}
 	public function update_pemilih($id=null){
 		$data['pemilih'] = $this->Admin_model->get_data_update($id);
+		$data['title'] = "Update Data Pemilih";
+		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/update-pemilih',$data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 	public function valid_update($id=null){
 		
@@ -105,7 +114,10 @@ class Admin extends CI_Controller {
 	// fungsi untuk Kandidat BEM
 	public function daftar_kandidat_bem(){
 		$data['kandidat'] = $this->Admin_model->kandidat_bem(); 
+		$data['title'] = "Daftar Kandidat BEM";
+		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/daftar-kandidat-bem',$data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 	public function hapus_kandidat_bem($id=null){
 		$query = $this->Admin_model->hapus_kandidat_bem($id);
@@ -120,7 +132,10 @@ class Admin extends CI_Controller {
 	//fungsi untuk kandidat ketua BEM
 	public function add_kandidat_bem_ketua(){
 		$data['error'] = validation_errors();
+		$data['title'] = "Tambah Kandidat Ketua BEM";
+		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/add-kandidat-ketua-bem',$data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 	public function valid_ketua_bem(){
 		$this->form_validation->set_rules('no_urut','No urut','xss_clean|trim|required|numeric');
@@ -183,7 +198,10 @@ class Admin extends CI_Controller {
 	//fungsi untuk kandidat wakil BEM	
 	public function add_kandidat_bem_wakil(){
 		$data['error'] = validation_errors();
+		$data['title'] = "Tambah Kandidat Wakil Ketua BEM";
+		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/add-kandidat-wakil-bem',$data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 	public function valid_wakil_bem(){
 		$this->form_validation->set_rules('no_urut','No urut','xss_clean|trim|required|numeric');
@@ -240,7 +258,10 @@ class Admin extends CI_Controller {
 	//fungsi untuk edit ketua BEM
 	public function update_ketua_bem($id=null){
 		$data['ketua'] = $this->Admin_model->get_update_ketua_bem($id); 
+		$data['title'] = "Update Data Calon Ketua BEM";
+		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/update-ketua-bem',$data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 	public function valid_update_ketua_bem($id){
 		
@@ -304,7 +325,10 @@ class Admin extends CI_Controller {
 	}
 	public function update_wakil_bem($id=null){
 		$data['wakil'] = $this->Admin_model->get_update_wakil_bem($id); 
+		$data['title'] = "Update Data Calon Wakil Ketua Bem";
+		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/update-wakil-bem',$data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 	public function valid_update_wakil_bem($id){
 		
@@ -366,11 +390,17 @@ class Admin extends CI_Controller {
 	//fungsi untuk senat
 	public function daftar_kandidat_senat(){
 		$data['kandidat'] = $this->Admin_model->kandidat_senat(); 
+		$data['title'] = "Daftar Kandidat Senat";
+		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/daftar-kandidat-senat',$data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 	public function add_kandidat_senat(){
 		$data['error'] = validation_errors();
-		$this->load->view('admin/add-kandidat-senat',$data);
+		$data['title'] = "Tambah Kandidat Senat";
+		$this->load->view('admin/partials/header', $data);
+		$this->load->view('admin/add-kandidat-senat', $data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 	public function valid_senat(){
 		$this->form_validation->set_rules('no_urut','No urut','xss_clean|trim|required|numeric');
@@ -381,12 +411,12 @@ class Admin extends CI_Controller {
 		$nama = $this->input->post('nama');
 		$angkatan = $this->input->post('angkatan');
 		
-			$config['upload_path'] 		= './assets/img/senat/'.$angkatan;
+			$config['upload_path'] 		= './assets/img/senat/';
 			$config['allowed_types'] 	= 'jpg|jpeg|pdf|png|PNG';
 			$config['max_size'] 		= 200048;
 			$config['overwrite']		= TRUE;
 
-			$config['file_name'] = url_title("senat".$no_urut);
+			$config['file_name'] = url_title($angkatan."_senat".$no_urut);
 			$this->upload->initialize($config);
 
 			if($this->upload->do_upload('foto_file')){
@@ -440,7 +470,10 @@ class Admin extends CI_Controller {
 	}
 	public function update_senat($id=null){
 		$data['senat'] = $this->Admin_model->get_update_senat($id); 
+		$data['title'] = "Update Data Kandidat Senat";
+		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/update-senat',$data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 	public function valid_update_senat($id){
 		$this->form_validation->set_rules('no_urut','No urut','xss_clean|trim|required|numeric');
@@ -451,12 +484,12 @@ class Admin extends CI_Controller {
 		$nama = $this->input->post('nama');
 		$angkatan = $this->input->post('angkatan');
 		
-			$config['upload_path'] 		= './assets/img/senat/'.$angkatan;
+			$config['upload_path'] 		= './assets/img/senat/';
 			$config['allowed_types'] 	= 'jpg|jpeg|pdf|png|PNG';
 			$config['max_size'] 		= 200048;
 			$config['overwrite']		= TRUE;
 
-			$config['file_name'] = url_title("senat".$no_urut);
+			$config['file_name'] = url_title($angkatan."_senat".$no_urut);
 			$this->upload->initialize($config);
 
 			if($this->upload->do_upload('foto_file')){
@@ -500,8 +533,12 @@ class Admin extends CI_Controller {
 					}
 			}
 	}
-	public function hitung_vote($view){
+	public function hitung_vote($view, $angkatan){
 		$data['view']=$view;
+
+		// $angkatan = array(
+		// 	date('Y'), strval(date('Y')-1), strval(date('Y')-2)
+		// );
 
 		$data['bem_total'] = $this->Admin_model->stotal_bem();
 		$data['bem_sudah'] = $this->Admin_model->sudah_bem();
@@ -510,15 +547,20 @@ class Admin extends CI_Controller {
 		$data['senat_sudah'] = $this->Admin_model->sudah_senat();
 		$data['senat_belum'] = $this->Admin_model->belum_senat();
 
-		$data['senat_sudah15'] = $this->Admin_model->sudah_senat_angkatan("2015");
-		$data['senat_sudah16'] = $this->Admin_model->sudah_senat_angkatan("2016");
-		$data['senat_sudah17'] = $this->Admin_model->sudah_senat_angkatan("2017");
+		// $data['senat_sudah15'] = $this->Admin_model->sudah_senat_angkatan("2015");
+		// $data['senat_sudah16'] = $this->Admin_model->sudah_senat_angkatan("2016");
+		// $data['senat_sudah17'] = $this->Admin_model->sudah_senat_angkatan("2017");
+		$data['senat_sudah'] = $this->Admin_model->sudah_senat_angkatan($angkatan);
 
 		$data['xkandidat_bem'] = $this->Admin_model->get_jml_kandidat_bem();
-		$data['xkandidat_senat15'] = $this->Admin_model->get_jml_kandidat_senat("2015");
-		$data['xkandidat_senat16'] = $this->Admin_model->get_jml_kandidat_senat("2016");
-		$data['xkandidat_senat17'] = $this->Admin_model->get_jml_kandidat_senat("2017");
-			
+		// $data['xkandidat_senat15'] = $this->Admin_model->get_jml_kandidat_senat("2015");
+		// $data['xkandidat_senat16'] = $this->Admin_model->get_jml_kandidat_senat("2016");
+		// $data['xkandidat_senat17'] = $this->Admin_model->get_jml_kandidat_senat("2017");
+		$data['xkandidat_senat'] = $this->Admin_model->get_jml_kandidat_senat($angkatan);
+		$data['angkatan'] = $angkatan;
+		
+		$data['title'] = "Perolehan Suara";
+		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/hasil-vote',$data);
 		// echo $data;
 		// var_dump($data);
