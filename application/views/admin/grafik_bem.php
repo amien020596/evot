@@ -1,13 +1,13 @@
-<?php 
+<?php
   $warna = array('#e74c3c', '#27ae60', '#e67e22', '#3498db', '#9b59b6', '#34495e', '#bdc3c7', '#f39c12');
-  for ($i=1; $i <= $xkandidat_bem; $i++) { 
+  for ($i=1; $i <= $xkandidat_bem; $i++) {
     $suara = $this->Admin_model->hitung_bem($i);
     $chart_bem[] = array(
       'label' => "Paslon $i",
       'data'  => $suara,
       'color' => $warna[$i-1]
-    ); 
-  } 
+    );
+  }
 ?>
 
 <!-- Main content -->
@@ -29,7 +29,7 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
-      
+
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -44,13 +44,13 @@
             <div class="box-body no-padding">
               <table class="table text-upper">
               <tr>
-                  <th>NO</th>
-                  <th colspan="2">Pasangan Calon</th>
-                  <th>Perolehan Suara</th>
+                  <th class="text-center">NO</th>
+                  <th class="text-left" colspan="2">Pasangan Calon</th>
+                  <th class="text-center">Perolehan Suara</th>
               </tr>
-              <?php 
+              <?php
                 $this->load->model('Admin_model');
-                for ($i= 1; $i <= $xkandidat_bem; $i++) { 
+                for ($i= 1; $i <= $xkandidat_bem; $i++) {
                   $data = $this->Admin_model->get_data_kandidat_bem($i);
                   $e = $this->Admin_model->hitung_bem($i);
               ?>
@@ -58,8 +58,8 @@
                   <td class="text-center bigger"><?php echo $data->no_urut; ?></td>
                   <td class="foto">
                       <ul class="foto_paslon">
-                        <li><img src="<?php echo base_url('assets');?>/img/bem/kabem<?php echo $data->no_urut;?>.png" style="width:40px"></li>
-                        <li><img src="<?php echo base_url('assets');?>/img/bem/wakabem<?php echo $data->no_urut;?>.png" style="width:40px"></li>
+                        <li style="list-style-type:none"><img src="<?php echo base_url('assets');?>/img/bem/kabem<?php echo $data->no_urut;?>.png" style="width:40px"></li>
+                        <li style="list-style-type:none"><img src="<?php echo base_url('assets');?>/img/bem/wakabem<?php echo $data->no_urut;?>.png" style="width:40px"></li>
                       </ul>
                   </td>
                   <td class="nama"><?php echo "$data->nama_ketua <br> $data->nama_wakil";?></td>
@@ -73,13 +73,13 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
-      
-      
+
+
       </div>
 
     </section>
     <!-- /.content -->
-   
+
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -90,7 +90,7 @@
     reserved.
   </footer>
 
-  
+
 </div>
 <!-- ./wrapper -->
 

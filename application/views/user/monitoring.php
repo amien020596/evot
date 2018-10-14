@@ -1,9 +1,9 @@
 <?php
 	$progress_bem 	= round($bem_sudah/$bem_total, 2)*100;
 	$progress_senat = round($senat_sudah/$senat_total, 2)*100;
-	$progress_15 	= round($sudah15/$total15, 2)*100;
-	$progress_16 	= round($sudah16/$total16, 2)*100;
-	$progress_17 	= round($sudah17/$total17, 2)*100;
+	$progress_2 	= round($sudah2/$total2, 2)*100;
+	$progress_1 	= round($sudah1/$total1, 2)*100;
+	$progress_0 	= round($sudah0/$total0, 2)*100;
 
 	function progress($val)
 	{
@@ -58,7 +58,7 @@
 			<div class="col-md-12">
 			<div class="box">
 	            <div class="box-header">
-		            <h2 class="text-title text-upper">Total Perolehan Suara <br><sub>Pemiltas FKM 2017</sub></h2>
+		            <h2 class="text-title text-upper">Total Perolehan Suara <br><sub>Pemiltas FKM <?=date("Y"); ?></sub></h2>
 	            </div>
 	            <br>
 	            <!-- /.box-header -->
@@ -107,37 +107,37 @@
 		              </td>
 		            </tr>
 		            <tr>
-		              <td>Senat 2015</td>
-		              <td><?php echo "$sudah15 / $total15"; ?></td>
+		              <td>Senat <?=date("Y")-2;?></td>
+		              <td><?php echo "$sudah2 / $total2"; ?></td>
 		              <td>
 		                <div class="progress">
-						  <div class="progress-bar progress-bar-<?php echo progress($progress_15); ?> progress-bar-striped active" role="progressbar"
-						  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style='width:<?php echo "$progress_15%"; ?>'>
-						    <?php echo "$progress_15%"; ?>
+						  <div class="progress-bar progress-bar-<?php echo progress($progress_2); ?> progress-bar-striped active" role="progressbar"
+						  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style='width:<?php echo "$progress_2%"; ?>'>
+						    <?php echo "$progress_2%"; ?>
 						  </div>
 						</div>
 		              </td>
 		            </tr>
 		            <tr>
-		              <td>Senat 2016</td>
-		              <td><?php echo "$sudah16 / $total16"; ?></td>
+		              <td>Senat <?=date("Y")-1;?></td>
+		              <td><?php echo "$sudah1 / $total1"; ?></td>
 		              <td>
 		                <div class="progress">
-						  <div class="progress-bar progress-bar-<?php echo progress($progress_16); ?> progress-bar-striped active" role="progressbar"
-						  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style='width:<?php echo "$progress_16%"; ?>'>
-						    <?php echo "$progress_16%"; ?>
+						  <div class="progress-bar progress-bar-<?php echo progress($progress_1); ?> progress-bar-striped active" role="progressbar"
+						  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style='width:<?php echo "$progress_1%"; ?>'>
+						    <?php echo "$progress_1%"; ?>
 						  </div>
 						</div>
 		              </td>
 		            </tr>
 		            <tr>
-		              <td>Senat 2017</td>
-		              <td><?php echo "$sudah17 / $total17"; ?></td>
+		              <td>Senat <?=date("Y");?></td>
+		              <td><?php echo "$sudah0 / $total0"; ?></td>
 		              <td>
 		                <div class="progress">
-						  <div class="progress-bar progress-bar-<?php echo progress($progress_17); ?> progress-bar-striped active" role="progressbar"
-						  aria-valuenow="93" aria-valuemin="0" aria-valuemax="100" style='width:<?php echo "$progress_17%"; ?>'>
-						    <?php echo "$progress_17%"; ?>
+						  <div class="progress-bar progress-bar-<?php echo progress($progress_0); ?> progress-bar-striped active" role="progressbar"
+						  aria-valuenow="93" aria-valuemin="0" aria-valuemax="100" style='width:<?php echo "$progress_0%"; ?>'>
+						    <?php echo "$progress_0%"; ?>
 						  </div>
 						</div>
 		              </td>

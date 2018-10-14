@@ -33,7 +33,7 @@ class Admin extends CI_Controller {
 	//end construct
 	public function index()
 	{
-		$this->load->view('admin/layout');
+		redirect('daftar-pemilih');
 	}
 
 	// public function login()
