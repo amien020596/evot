@@ -200,15 +200,23 @@
                     <td><?php echo $data['password_pemilih']; ?></td>
                     <td><?php echo $data['status']; ?></td>
                     <td>
-                    <a href="<?php echo base_url('hapus-pemilih/').$data['idpemilih'];?>" <?php echo ($data['status'] == 'sudah') ? 'disabled' : ''; ?> class="btn btn-danger"><i class="fa fa-trash bigicon"></i></a>
+                    <!-- <a href="<?php echo base_url('hapus-pemilih/').$data['idpemilih'];?>" <?php echo ($data['status'] == 'sudah') ? 'disabled' : ''; ?> class="btn btn-danger"><i class="fa fa-trash bigicon"></i></a>
                     &nbsp;&nbsp;&nbsp;
                     <a href="<?php echo base_url('update-pemilih/').$data['idpemilih'];?>" <?php echo ($data['status'] == 'sudah') ? 'disabled' : ''; ?> class="btn btn-primary"><i class="fa fa-upload bigicon"></i></a>
-                    </td>
+                  -->
+                  <?php
+                    if($data['status'] == 'sudah'){
+                      ?>
+                      <span class="btn btn-danger"> <i class="fa fa-trash bigicon"></i></span>
+                      <?php
+                    }
+                   ?>
+                  </td>
                     <?php $no++; ?>
                   </tr>
                   <?php } } ?>
-                  
-                
+
+
                 </tbody>
                 <tfoot>
                 <tr>
