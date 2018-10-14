@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2018 at 06:25 AM
+-- Generation Time: Oct 14, 2018 at 08:12 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -51,9 +51,9 @@ CREATE TABLE `hasil_vote` (
   `idhasil_vote` int(11) NOT NULL,
   `BEM` int(2) DEFAULT NULL,
   `SENAT` int(2) DEFAULT NULL,
-  `pemilih_idpemilih` bigint(15) NOT NULL,
-  `angkatan` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `pemilih_idpemilih` bigint(15) DEFAULT NULL,
+  `angkatan` varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1664,8 +1664,8 @@ ALTER TABLE `admin`
 -- Indexes for table `hasil_vote`
 --
 ALTER TABLE `hasil_vote`
-  ADD PRIMARY KEY (`idhasil_vote`,`pemilih_idpemilih`),
-  ADD KEY `fk_hasil_vote_pemilih_idx` (`pemilih_idpemilih`);
+  ADD PRIMARY KEY (`idhasil_vote`),
+  ADD KEY `pemilih_idpemilih` (`pemilih_idpemilih`);
 
 --
 -- Indexes for table `kandidat_bem`
@@ -1694,7 +1694,7 @@ ALTER TABLE `pemilih`
 -- AUTO_INCREMENT for table `hasil_vote`
 --
 ALTER TABLE `hasil_vote`
-  MODIFY `idhasil_vote` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idhasil_vote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kandidat_bem`
@@ -1716,7 +1716,7 @@ ALTER TABLE `kandidat_senat`
 -- Constraints for table `hasil_vote`
 --
 ALTER TABLE `hasil_vote`
-  ADD CONSTRAINT `fk_hasil_vote_pemilih` FOREIGN KEY (`pemilih_idpemilih`) REFERENCES `pemilih` (`idpemilih`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `hasil_vote_ibfk_1` FOREIGN KEY (`pemilih_idpemilih`) REFERENCES `pemilih` (`idpemilih`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

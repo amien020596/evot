@@ -9,7 +9,7 @@ class Admin_model extends CI_Model {
             return $query->result_array();
         }else{
             return false;
-        }   
+        }
     }
     public function add_pemilih(){
         $data = array(
@@ -56,7 +56,7 @@ class Admin_model extends CI_Model {
             'nama_pemilih'=>$this->input->post('nama'),
             'angkatan'=>$this->input->post('angkatan'),
             'password_pemilih'=>$this->input->post('password'),
-            
+
         );
         $query = $this->db->update('pemilih',$data,$where);
         if($query==true){
@@ -265,7 +265,7 @@ class Admin_model extends CI_Model {
             return false;
         }
     }
-    
+
     public function sudah_bem(){
         $where = "BEM != 'NULL'";
         $this->db->where($where);
@@ -276,7 +276,7 @@ class Admin_model extends CI_Model {
             return $query;
         }else{
             return false;
-        } 
+        }
     }
 
     public function sudah_senat(){
@@ -289,7 +289,7 @@ class Admin_model extends CI_Model {
             return $query;
         }else{
             return false;
-        } 
+        }
     }
 
     public function belum_bem(){
@@ -328,8 +328,8 @@ class Admin_model extends CI_Model {
             return $query;
         }else{
             return 0;
-        }   
-    }    
+        }
+    }
 
     public function sudah_senat_angkatan($angkatan) {
         $where = array(
@@ -344,7 +344,7 @@ class Admin_model extends CI_Model {
             return $query;
         }else{
             return false;
-        }   
+        }
     }
 
     public function belum_senat_angkatan($angkatan) {
@@ -360,9 +360,9 @@ class Admin_model extends CI_Model {
             return $query;
         }else{
             return 0;
-        }   
+        }
     }
-    
+
     public function get_jml_kandidat_bem(){
         $this->db->from('kandidat_bem');
         $query = $this->db->count_all_results();
@@ -371,7 +371,7 @@ class Admin_model extends CI_Model {
             return $query;
         }else{
             return false;
-        }       
+        }
     }
 
     public function get_jml_kandidat_senat($angkatan){
@@ -384,8 +384,8 @@ class Admin_model extends CI_Model {
             return $query;
         }else{
             return false;
-        }       
-    }    
+        }
+    }
 
     public function get_data_kandidat_bem($urut) {
         $where = array('no_urut' => $urut );
@@ -407,13 +407,13 @@ class Admin_model extends CI_Model {
 
     public function reset(){
         $this->db->trans_start();
-        $this->db->query('DELETE FROM hasil_vote');
-        $this->db->query('ALTER TABLE hasil_vote AUTO_INCREMENT 1');
+        // $this->db->query('DELETE FROM hasil_vote');
+        // $this->db->query('ALTER TABLE hasil_vote AUTO_INCREMENT 1');
         $this->db->query('DELETE FROM kandidat_bem');
         $this->db->query('ALTER TABLE kandidat_bem AUTO_INCREMENT 1');
         $this->db->query('DELETE FROM kandidat_senat');
         $this->db->query('ALTER TABLE kandidat_senat AUTO_INCREMENT 1');
-        $this->db->trans_complete();      
+        $this->db->trans_complete();
 
         if ($this->db->trans_status() === TRUE)
         {
@@ -421,12 +421,12 @@ class Admin_model extends CI_Model {
         }else{
             return false;
         }
-        
+
     }
     public function reset_pemilih(){
         $this->db->trans_start();
         $this->db->query('DELETE FROM pemilih');
-        $this->db->trans_complete();      
+        $this->db->trans_complete();
 
         if ($this->db->trans_status() === TRUE)
         {
@@ -434,6 +434,6 @@ class Admin_model extends CI_Model {
         }else{
             return false;
         }
-        
+
     }
 }
