@@ -14,9 +14,9 @@ class Admin extends CI_Controller {
         if ( ($this->session->userdata('uname') || $this->session->userdata('pass')) == NULL) {
         	$array = array(
 	        	'uname' 	=> $this->input->post('uname'),
-	        	'pass' 		=> $this->input->post('pass') 
+	        	'pass' 		=> $this->input->post('pass')
 	        );
-	        
+
 	        $this->session->set_userdata( $array );
         }
 
@@ -41,7 +41,7 @@ class Admin extends CI_Controller {
 	// 	$this->load->view('admin/login');
 	// }
 	public function daftar_pemilih(){
-		$data['pemilih'] = $this->Admin_model->daftar_pemilih(); 
+		$data['pemilih'] = $this->Admin_model->daftar_pemilih();
 		$data['title'] = "Daftar Pemilih";
 		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/daftar_pemilih',$data);
@@ -78,7 +78,7 @@ class Admin extends CI_Controller {
 			$this->daftar_pemilih();
 		}else{
 			$data['error']="Data already Deleted";
-			$data['pemilih'] = $this->Admin_model->daftar_pemilih(); 
+			$data['pemilih'] = $this->Admin_model->daftar_pemilih();
 			$this->load->view('admin/daftar_pemilih',$data);
 		}
 	}
@@ -90,12 +90,12 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/partials/footer', $data);
 	}
 	public function valid_update($id=null){
-		
+
 		$this->form_validation->set_rules('nama','Nama','xss_clean|trim|required');
 		$this->form_validation->set_rules('angkatan','Angkatan','xss_clean|trim|required');
 		$this->form_validation->set_rules('password','Password','xss_clean|trim|required');
 		$this->form_validation->set_rules('password2','Password','xss_clean|trim|required|matches[password]');
-		
+
 		if($this->form_validation->run()==false){
 			$data['error'] = validation_errors();
 			$data['pemilih'] = $this->Admin_model->get_data_update($id);
@@ -113,7 +113,7 @@ class Admin extends CI_Controller {
 	}
 	// fungsi untuk Kandidat BEM
 	public function daftar_kandidat_bem(){
-		$data['kandidat'] = $this->Admin_model->kandidat_bem(); 
+		$data['kandidat'] = $this->Admin_model->kandidat_bem();
 		$data['title'] = "Daftar Kandidat BEM";
 		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/daftar-kandidat-bem',$data);
@@ -125,7 +125,7 @@ class Admin extends CI_Controller {
 			$this->daftar_kandidat_bem();
 		}else{
 			$data['error']="Data already Deleted";
-			$data['kandidat'] = $this->Admin_model->kandidat_bem(); 
+			$data['kandidat'] = $this->Admin_model->kandidat_bem();
 			$this->load->view('admin/daftar-kandidat-bem',$data);
 		}
 	}
@@ -145,7 +145,7 @@ class Admin extends CI_Controller {
 		$no_urut = $this->input->post('no_urut');
 		$nama_ketua = $this->input->post('nama_ketua');
 		$angkatan = $this->input->post('angkatan');
-		
+
 			$config['upload_path'] 		= './assets/img/bem/';
 			$config['allowed_types'] 	= 'jpg|jpeg|pdf|png|PNG';
 			$config['max_size'] 		= 200048;
@@ -155,15 +155,15 @@ class Admin extends CI_Controller {
 			$this->upload->initialize($config);
 
 			if($this->upload->do_upload('foto_ketua')){
-				$upload_data = $this->upload->data(); 
+				$upload_data = $this->upload->data();
 				$file_name = $upload_data['file_name'];
-				
+
 				$config2['image_library'] = 'gd2';
 				$config2['source_image'] = $this->upload->upload_path.$this->upload->file_name;
 				$config2['maintain_ratio'] = TRUE;
 				$config2['width'] = 200;
 				$config2['height'] = 350;
-				
+
 				$this->load->library('image_lib',$config2);
 				$this->image_lib->clear();
 				$this->image_lib->initialize($config2);
@@ -172,11 +172,11 @@ class Admin extends CI_Controller {
 			}else{
 				echo "gagal upload foto & data";
 			}
-			
+
 			if($this->form_validation->run()==false){
 				$data['error'] = validation_errors();
 				$this->load->view('admin/add-kandidat-ketua-bem',$data);
-				
+
 			}else{
 					$data=array(
 					'no_urut'=>$no_urut,
@@ -193,9 +193,9 @@ class Admin extends CI_Controller {
 					}
 			}
 		}
-		
 
-	//fungsi untuk kandidat wakil BEM	
+
+	//fungsi untuk kandidat wakil BEM
 	public function add_kandidat_bem_wakil(){
 		$data['error'] = validation_errors();
 		$data['title'] = "Tambah Kandidat Wakil Ketua BEM";
@@ -206,10 +206,10 @@ class Admin extends CI_Controller {
 	public function valid_wakil_bem(){
 		$this->form_validation->set_rules('no_urut','No urut','xss_clean|trim|required|numeric');
 		$this->form_validation->set_rules('nama_wakil','Nama Ketua','xss_clean|trim|required');
-		
+
 		$no_urut = $this->input->post('no_urut');
 		$nama_ketua = $this->input->post('nama_wakil');
-		
+
 			$config['upload_path'] 		= './assets/img/bem/';
 			$config['allowed_types'] 	= 'jpg|jpeg|pdf|png|PNG';
 			$config['max_size'] 		= 200048;
@@ -219,15 +219,15 @@ class Admin extends CI_Controller {
 			$this->upload->initialize($config);
 
 			if($this->upload->do_upload('foto_wakil')){
-				$upload_data = $this->upload->data(); 
+				$upload_data = $this->upload->data();
 				$file_name = $upload_data['file_name'];
-				
+
 				$config2['image_library'] = 'gd2';
 				$config2['source_image'] = $this->upload->upload_path.$this->upload->file_name;
 				$config2['maintain_ratio'] = TRUE;
 				$config2['width'] = 200;
 				$config2['height'] = 350;
-				
+
 				$this->load->library('image_lib',$config2);
 				$this->image_lib->clear();
 				$this->image_lib->initialize($config2);
@@ -236,11 +236,11 @@ class Admin extends CI_Controller {
 			}else{
 				echo "gagal upload foto & data";
 			}
-			
+
 			if($this->form_validation->run()==false){
 				$data['error'] = validation_errors();
 				$this->load->view('admin/add-kandidat-wakil-bem',$data);
-				
+
 			}else{
 					$data=array(
 					'nama_wakil'=>$nama_ketua,
@@ -257,14 +257,14 @@ class Admin extends CI_Controller {
 	}
 	//fungsi untuk edit ketua BEM
 	public function update_ketua_bem($id=null){
-		$data['ketua'] = $this->Admin_model->get_update_ketua_bem($id); 
+		$data['ketua'] = $this->Admin_model->get_update_ketua_bem($id);
 		$data['title'] = "Update Data Calon Ketua BEM";
 		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/update-ketua-bem',$data);
 		$this->load->view('admin/partials/footer', $data);
 	}
 	public function valid_update_ketua_bem($id){
-		
+
 		$this->form_validation->set_rules('no_urut','No urut','xss_clean|trim|required|numeric');
 		$this->form_validation->set_rules('nama_ketua','Nama Ketua','xss_clean|trim|required');
 		$this->form_validation->set_rules('angkatan','Angkatan','xss_clean|trim|required');
@@ -272,7 +272,7 @@ class Admin extends CI_Controller {
 		$no_urut = $this->input->post('no_urut');
 		$nama_ketua = $this->input->post('nama_ketua');
 		$angkatan = $this->input->post('angkatan');
-		
+
 			$config['upload_path'] 		= './assets/img/bem/';
 			$config['allowed_types'] 	= 'jpg|jpeg|pdf|png|PNG';
 			$config['max_size'] 		= 200048;
@@ -282,15 +282,15 @@ class Admin extends CI_Controller {
 			$this->upload->initialize($config);
 
 			if($this->upload->do_upload('foto_ketua')){
-				$upload_data = $this->upload->data(); 
+				$upload_data = $this->upload->data();
 				$file_name = $upload_data['file_name'];
-				
+
 				$config2['image_library'] = 'gd2';
 				$config2['source_image'] = $this->upload->upload_path.$this->upload->file_name;
 				$config2['maintain_ratio'] = TRUE;
 				$config2['width'] = 200;
 				$config2['height'] = 350;
-				
+
 				$this->load->library('image_lib',$config2);
 				$this->image_lib->clear();
 				$this->image_lib->initialize($config2);
@@ -299,12 +299,12 @@ class Admin extends CI_Controller {
 			}else{
 				echo "gagal upload foto & data";
 			}
-			
+
 			if($this->form_validation->run()==false){
 				$data['error'] = validation_errors();
-				$data['ketua'] = $this->Admin_model->get_update_ketua_bem($id); 
+				$data['ketua'] = $this->Admin_model->get_update_ketua_bem($id);
 				$this->load->view('admin/update-ketua-bem',$data);
-				
+
 			}else{
 					$data=array(
 					'no_urut'=>$no_urut,
@@ -317,29 +317,29 @@ class Admin extends CI_Controller {
 						redirect('kandidat-bem');
 					}else{
 						$data['error'] = "Data Failure Upload";
-						$data['ketua'] = $this->Admin_model->get_update_ketua_bem($id); 
+						$data['ketua'] = $this->Admin_model->get_update_ketua_bem($id);
 						$this->load->view('admin/update-ketua-bem',$data);
 					}
 			}
-		
+
 	}
 	public function update_wakil_bem($id=null){
-		$data['wakil'] = $this->Admin_model->get_update_wakil_bem($id); 
+		$data['wakil'] = $this->Admin_model->get_update_wakil_bem($id);
 		$data['title'] = "Update Data Calon Wakil Ketua Bem";
 		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/update-wakil-bem',$data);
 		$this->load->view('admin/partials/footer', $data);
 	}
 	public function valid_update_wakil_bem($id){
-		
-		
+
+
 		$this->form_validation->set_rules('no_urut','No urut','xss_clean|trim|required|numeric');
 		$this->form_validation->set_rules('nama_wakil','Nama Ketua','xss_clean|trim|required');
 
 		$no_urut = $this->input->post('no_urut');
 		$nama_ketua = $this->input->post('nama_wakil');
-		
-		
+
+
 			$config['upload_path'] 		= './assets/img/bem/';
 			$config['allowed_types'] 	= 'jpg|jpeg|png|PNG';
 			$config['max_size'] 		= 200048;
@@ -349,15 +349,15 @@ class Admin extends CI_Controller {
 			$this->upload->initialize($config);
 
 			if($this->upload->do_upload('foto_wakil')){
-				$upload_data = $this->upload->data(); 
+				$upload_data = $this->upload->data();
 				$file_name = $upload_data['file_name'];
-				
+
 				$config2['image_library'] = 'gd2';
 				$config2['source_image'] = $this->upload->upload_path.$this->upload->file_name;
 				$config2['maintain_ratio'] = TRUE;
 				$config2['width'] = 200;
 				$config2['height'] = 350;
-				
+
 				$this->load->library('image_lib',$config2);
 				$this->image_lib->clear();
 				$this->image_lib->initialize($config2);
@@ -366,12 +366,12 @@ class Admin extends CI_Controller {
 			}else{
 				echo "gagal upload foto & data";
 			}
-			
+
 			if($this->form_validation->run()==false){
 				$data['error'] = validation_errors();
-				$data['wakil'] = $this->Admin_model->get_update_wakil_bem($id); 
+				$data['wakil'] = $this->Admin_model->get_update_wakil_bem($id);
 				$this->load->view('admin/update-wakil-bem',$data);
-				
+
 			}else{
 					$data=array(
 					'nama_wakil'=>$nama_ketua,
@@ -382,14 +382,14 @@ class Admin extends CI_Controller {
 						redirect('kandidat-bem');
 					}else{
 						$data['error'] = "Data Failure Upload";
-						$data['wakil'] = $this->Admin_model->get_update_wakil_bem($id); 
+						$data['wakil'] = $this->Admin_model->get_update_wakil_bem($id);
 						$this->load->view('admin/update-wakil-bem',$data);
 					}
 			}
 	}
 	//fungsi untuk senat
 	public function daftar_kandidat_senat(){
-		$data['kandidat'] = $this->Admin_model->kandidat_senat(); 
+		$data['kandidat'] = $this->Admin_model->kandidat_senat();
 		$data['title'] = "Daftar Kandidat Senat";
 		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/daftar-kandidat-senat',$data);
@@ -410,7 +410,7 @@ class Admin extends CI_Controller {
 		$no_urut = $this->input->post('no_urut');
 		$nama = $this->input->post('nama');
 		$angkatan = $this->input->post('angkatan');
-		
+
 			$config['upload_path'] 		= './assets/img/senat/';
 			$config['allowed_types'] 	= 'jpg|jpeg|pdf|png|PNG';
 			$config['max_size'] 		= 200048;
@@ -420,15 +420,15 @@ class Admin extends CI_Controller {
 			$this->upload->initialize($config);
 
 			if($this->upload->do_upload('foto_file')){
-				$upload_data = $this->upload->data(); 
+				$upload_data = $this->upload->data();
 				$file_name = $upload_data['file_name'];
-				
+
 				$config2['image_library'] = 'gd2';
 				$config2['source_image'] = $this->upload->upload_path.$this->upload->file_name;
 				$config2['maintain_ratio'] = TRUE;
 				$config2['width'] = 200;
 				$config2['height'] = 350;
-				
+
 				$this->load->library('image_lib',$config2);
 				$this->image_lib->clear();
 				$this->image_lib->initialize($config2);
@@ -437,11 +437,11 @@ class Admin extends CI_Controller {
 			}else{
 				echo "gagal upload foto & data";
 			}
-			
+
 			if($this->form_validation->run()==false){
 				$data['error'] = validation_errors();
 				$this->load->view('admin/add-kandidat-senat',$data);
-				
+
 			}else{
 					$data=array(
 					'no_urut'=>$no_urut,
@@ -464,12 +464,12 @@ class Admin extends CI_Controller {
 			$this->daftar_kandidat_senat();
 		}else{
 			$data['error']="Data already Deleted";
-			$data['kandidat'] = $this->Admin_model->kandidat_senat(); 
+			$data['kandidat'] = $this->Admin_model->kandidat_senat();
 			$this->load->view('admin/daftar-kandidat-senat',$data);
 		}
 	}
 	public function update_senat($id=null){
-		$data['senat'] = $this->Admin_model->get_update_senat($id); 
+		$data['senat'] = $this->Admin_model->get_update_senat($id);
 		$data['title'] = "Update Data Kandidat Senat";
 		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/update-senat',$data);
@@ -483,7 +483,7 @@ class Admin extends CI_Controller {
 		$no_urut = $this->input->post('no_urut');
 		$nama = $this->input->post('nama');
 		$angkatan = $this->input->post('angkatan');
-		
+
 			$config['upload_path'] 		= './assets/img/senat/';
 			$config['allowed_types'] 	= 'jpg|jpeg|pdf|png|PNG';
 			$config['max_size'] 		= 200048;
@@ -493,15 +493,15 @@ class Admin extends CI_Controller {
 			$this->upload->initialize($config);
 
 			if($this->upload->do_upload('foto_file')){
-				$upload_data = $this->upload->data(); 
+				$upload_data = $this->upload->data();
 				$file_name = $upload_data['file_name'];
-				
+
 				$config2['image_library'] = 'gd2';
 				$config2['source_image'] = $this->upload->upload_path.$this->upload->file_name;
 				$config2['maintain_ratio'] = TRUE;
 				$config2['width'] = 200;
 				$config2['height'] = 350;
-				
+
 				$this->load->library('image_lib',$config2);
 				$this->image_lib->clear();
 				$this->image_lib->initialize($config2);
@@ -510,13 +510,13 @@ class Admin extends CI_Controller {
 			}else{
 				echo "gagal upload foto & data";
 			}
-			
+
 			if($this->form_validation->run()==false){
-				
+
 				$data['error'] = validation_errors();
-				$data['senat'] = $this->Admin_model->get_update_senat($id); 
+				$data['senat'] = $this->Admin_model->get_update_senat($id);
 				$this->load->view('admin/update-senat',$data);
-				
+
 			}else{
 					$data=array(
 					'no_urut'=>$no_urut,
@@ -528,12 +528,12 @@ class Admin extends CI_Controller {
 					if($datas){
 						redirect('kandidat-senat');
 					}else{
-						$data['senat'] = $this->Admin_model->get_update_senat($id); 
+						$data['senat'] = $this->Admin_model->get_update_senat($id);
 						$this->load->view('admin/update-senat',$data);
 					}
 			}
 	}
-	public function hitung_vote($view, $angkatan){
+	public function hitung_vote($view, $angkatan=null){
 		$data['view']=$view;
 
 		// $angkatan = array(
@@ -558,7 +558,7 @@ class Admin extends CI_Controller {
 		// $data['xkandidat_senat17'] = $this->Admin_model->get_jml_kandidat_senat("2017");
 		$data['xkandidat_senat'] = $this->Admin_model->get_jml_kandidat_senat($angkatan);
 		$data['angkatan'] = $angkatan;
-		
+
 		$data['title'] = "Perolehan Suara";
 		$this->load->view('admin/partials/header', $data);
 		$this->load->view('admin/hasil-vote',$data);
@@ -569,26 +569,26 @@ class Admin extends CI_Controller {
 		$query = $this->Admin_model->reset();
 		if($query==true){
 			$data['error']= "data telah terhapus";
-			$data['pemilih'] = $this->Admin_model->daftar_pemilih(); 
+			$data['pemilih'] = $this->Admin_model->daftar_pemilih();
 			$this->load->view('admin/daftar_pemilih',$data);
 		}else{
 			$data['error']= "data tidak terhapus";
-			$data['pemilih'] = $this->Admin_model->daftar_pemilih(); 
+			$data['pemilih'] = $this->Admin_model->daftar_pemilih();
 			$this->load->view('admin/daftar_pemilih',$data);
-			
+
 		}
 	}
 	public function reset_data_pemilih(){
 		$query = $this->Admin_model->reset_pemilih();
 		if($query==true){
 			$data['error']= "data telah terhapus";
-			$data['pemilih'] = $this->Admin_model->daftar_pemilih(); 
+			$data['pemilih'] = $this->Admin_model->daftar_pemilih();
 			$this->load->view('admin/daftar_pemilih',$data);
 		}else{
 			$data['error']= "data tidak terhapus";
-			$data['pemilih'] = $this->Admin_model->daftar_pemilih(); 
+			$data['pemilih'] = $this->Admin_model->daftar_pemilih();
 			$this->load->view('admin/daftar_pemilih',$data);
-			
+
 		}
 	}
 
