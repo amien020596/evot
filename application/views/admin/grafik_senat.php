@@ -1,13 +1,13 @@
-<?php 
+<?php
   $warna = array('#e74c3c', '#27ae60', '#e67e22', '#3498db', '#9b59b6', '#34495e', '#bdc3c7', '#f39c12');
-  for ($i=1; $i <= $xkandidat_senat; $i++) { 
+  for ($i=1; $i <= $xkandidat_senat; $i++) {
     $suara = $this->Admin_model->hitung_senat($i, $angkatan);
     $chart[] = array(
       'label' => "Kandidat $i",
       'data'  => $suara,
       'color' => $warna[$i-1]
-    ); 
-  } 
+    );
+  }
 ?>
 
 <!-- Main content -->
@@ -33,7 +33,7 @@
       <!-- /.col -->
       </div>
       <!-- /.row -->
-      
+
       <div class="row">
 
         <div class="col-md-12">
@@ -45,14 +45,14 @@
             <div class="box-body no-padding">
               <table class="table text-upper">
               <tr>
-                  <th>NO</th>
-                  <th colspan="2">Calon Senat Angkatan</th>
-                  <th>Perolehan Suara</th>
+                  <th class="text-center">NO</th>
+                  <th class="text-left" colspan="2">Calon Senat Angkatan</th>
+                  <th class="text-center">Perolehan Suara</th>
               </tr>
-              <?php 
+              <?php
                 $this->load->model('Admin_model');
                 for ($i= 1; $i <= $xkandidat_senat; $i++) {
-                  $r = $this->Admin_model->get_data_kandidat_senat($i, $angkatan); 
+                  $r = $this->Admin_model->get_data_kandidat_senat($i, $angkatan);
                   $e = $this->Admin_model->hitung_senat($i, $angkatan);
               ?>
                 <tr>
@@ -60,7 +60,7 @@
                   <td class="foto">
                       <ul class="foto_paslon">
                         <!-- <li><img src="<?php echo base_url('assets');?>/img/senat/<?php echo $angkatan."_senat".$r->no_urut;?>.png" style="width:40px"></li> -->
-                        <li><img src="<?=base_url('assets/img/senat/').$r->foto?>" alt=""></li>
+                        <li style="list-style-type:none"><img style="width:40px" src="<?=base_url('assets/img/senat/').$r->foto?>" alt=""></li>
                       </ul>
                   </td>
                   <td class="nama-senat"><?php echo "$r->nama_kandidat";?></td>
@@ -75,7 +75,7 @@
         </div>
         <!-- /.col -->
 
-        
+
         <!-- /.col -->
       </div>
       </div>
@@ -93,7 +93,7 @@
     reserved.
   </footer>
 
-  
+
 </div>
 <!-- ./wrapper -->
 
@@ -120,7 +120,7 @@
   $(function () {
 
     var donut = <?php echo json_encode($chart); ?>;
-    
+
     $.plot("#donut-senat", donut, {
       series: {
         pie: {

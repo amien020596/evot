@@ -1,4 +1,4 @@
-<?php 
+<?php
 	$bem		= $this->Admin_model->get_data_kandidat_bem($this->session->userdata('bem'));
 	$senat 		= $this->Admin_model->get_data_kandidat_senat($this->session->userdata('senat'), $angkatan);
 ?>
@@ -8,7 +8,7 @@
 		<h2>Vote Review <br>Periksa Kembali Pilihan Anda</h2>
 		<p><?php echo "$waktu, $nama ($nim)"; ?> |<a href="" class="btn btn-link" data-toggle="modal" data-target="#myModal">Petunjuk</a> <!-- |<a href="<?php echo base_url('logout'); ?>" class="btn btn-link" data-toggle="modal" data-target="#exitModal">Keluar</a> --></p>
 	</div>
-	<div class="row text-center">		
+	<div class="row text-center">
 		<div class="col-md-11 line"></div>
 	</div>
 	<div class="row text-center vote-container">
@@ -35,13 +35,13 @@
 			</div>
 			<div class="col-md-6">
 				<p><strong>CALON<br>WAKIL KETUA</strong></p>
-				<p><?php echo $bem->nama_wakil; ?></p>	
+				<p><?php echo $bem->nama_wakil; ?></p>
 			</div>
 		</div>
 	</div>
 	<div class="col-vote col-md-3
 		<?php $list_senator = array("2013", "2014", "2012","2011", "2011");
-			if (in_array($angkatan, $list_senator)){ 
+			if (in_array($angkatan, $list_senator)){
 				echo "hidden";
 		}else{?>">
 		<div class="row text-center" style="background: rgba(166, 75, 154, 1);">
@@ -79,8 +79,8 @@
 		<!-- <div class="col-md-3 line"></div> -->
 		<div class="col-md-11 line footer">
 			<img class="footer-img" src="<?php echo base_url();?>assets/img/footerlogo.png">
-			<label id="copyright" class=""> 
-				Copyright &copy; Pemiltas FKM 2017 <br>
+			<label id="copyright" class="">
+				Copyright &copy; Pemiltas FKM <?= date("Y");?> <br>
 				All Right Reserved
 			</label>
 		</div>

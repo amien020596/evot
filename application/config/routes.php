@@ -98,4 +98,3 @@ $route['update-senat/(:num)'] = 'admin/update_senat/$1';
 $route['update-kandidat-senat/(:num)'] = 'admin/valid_update_senat/$1';
 
 $route['monitoring'] = 'welcome/monitoring';
-

@@ -3,7 +3,7 @@
 		<h2>Calon Senator Angkatan <?php echo $angkatan; ?> <br>SM FKM Undip 2018</h2>
 		<p><?php echo "$waktu, $nama ($nim)"; ?> |<a href="" class="btn btn-link" data-toggle="modal" data-target="#myModal">Petunjuk</a> <!-- |<a href="<?php echo base_url('logout'); ?>" class="btn btn-link" data-toggle="modal" data-target="#exitModal">Keluar</a> --></p>
 	</div>
-	<div class="row text-center">		
+	<div class="row text-center">
 		<div class="col-md-11 line"></div>
 	</div>
 	<div class="row text-center">
@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<?php } ?>
-	
+
 
 	<div class="row text-center">
 		<div class="col-md-3 line"></div>
@@ -45,8 +45,8 @@
 		<!-- <div class="col-md-3 line"></div> -->
 		<div class="col-md-11 line footer">
 			<img class="footer-img" src="<?php echo base_url();?>assets/img/footerlogo.png">
-			<label id="copyright" class=""> 
-				Copyright &copy; Pemiltas FKM 2017 <br>
+			<label id="copyright" class="">
+				Copyright &copy; Pemiltas FKM <?= date("Y");?> <br>
 				All Right Reserved
 			</label>
 		</div>

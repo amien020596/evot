@@ -4,7 +4,7 @@
 		<br>
 			<h2 class="uppercase">terimakasih</h2>
 			<h1 class="uppercase"><?php echo "$nama ($nim)"; ?></h1>
-			<h3>Atas partisipasi untuk turut mensukseskan Pemiltas FKM Undip 2017</h3>
+			<h3>Atas partisipasi untuk turut mensukseskan Pemiltas FKM Undip <?= date("Y");?></h3>
 
 			<p>Silahkan klik tombol di bawah ini untuk melanjutkan</p>
 			<br>
