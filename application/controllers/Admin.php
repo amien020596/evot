@@ -577,32 +577,28 @@ class Admin extends CI_Controller {
 		if($query==true){
 			$data['error']= "data telah terhapus";
 			$data['pemilih'] = $this->Admin_model->daftar_pemilih();
-			$this->load->view('admin/daftar_pemilih',$data);
 		}else{
 			$data['error']= "data tidak terhapus";
-			$data['pemilih'] = $this->Admin_model->daftar_pemilih();
-			$data['title'] = 'Daftar Pemilih';
-			$this->load->view('admin/partials/header', $data);
-			$this->load->view('admin/daftar_pemilih',$data);
-			$this->load->view('admin/partials/footer', $data);
-
+			$data['pemilih'] = $this->Admin_model->daftar_pemilih();	
 		}
+		$data['title'] = 'Daftar Pemilih';
+		$this->load->view('admin/partials/header', $data);
+		$this->load->view('admin/daftar_pemilih',$data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 	public function reset_data_pemilih(){
 		$query = $this->Admin_model->reset_pemilih();
 		if($query==true){
 			$data['error']= "data telah terhapus";
 			$data['pemilih'] = $this->Admin_model->daftar_pemilih();
-			$this->load->view('admin/daftar_pemilih',$data);
 		}else{
 			$data['error']= "data tidak terhapus";
-			$data['pemilih'] = $this->Admin_model->daftar_pemilih();
-			$data['title'] = 'Daftar Pemilih';
-			$this->load->view('admin/partials/header', $data);
-			$this->load->view('admin/daftar_pemilih',$data);
-			$this->load->view('admin/partials/footer', $data);
-
+			$data['pemilih'] = $this->Admin_model->daftar_pemilih();	
 		}
+		$data['title'] = 'Daftar Pemilih';
+		$this->load->view('admin/partials/header', $data);
+		$this->load->view('admin/daftar_pemilih',$data);
+		$this->load->view('admin/partials/footer', $data);
 	}
 
 
