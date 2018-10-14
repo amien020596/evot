@@ -1,9 +1,9 @@
 <?php
-	$progress_bem 	= round($bem_sudah/$bem_total, 2)*100;
-	$progress_senat = round($senat_sudah/$senat_total, 2)*100;
-	$progress_2 	= round($sudah2/$total2, 2)*100;
-	$progress_1 	= round($sudah1/$total1, 2)*100;
-	$progress_0 	= round($sudah0/$total0, 2)*100;
+	$progress_bem 	= $bem_total > 0 ? round($bem_sudah/$bem_total, 2)*100 : 0;
+	$progress_senat = $senat_total > 0 ? round($senat_sudah/$senat_total, 2)*100 : 0;
+	$progress_2 	= $total2 > 0 ? round($sudah2/$total2, 2)*100 : 0;
+	$progress_1 	= $total1 > 0 ? round($sudah1/$total1, 2)*100 : 0;
+	$progress_0 	= $total0 > 0 ? round($sudah0/$total0, 2)*100 : 0;
 
 	function progress($val)
 	{
