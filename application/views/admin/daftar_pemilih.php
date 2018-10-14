@@ -51,9 +51,15 @@
                     <td><?php echo $data['password_pemilih']; ?></td>
                     <td><?php echo $data['status']; ?></td>
                     <td>
-                    <a href="<?php echo base_url('hapus-pemilih/').$data['idpemilih'];?>" <?php echo ($data['status'] == 'sudah') ? 'disabled' : ''; ?> class="btn btn-danger"><i class="fa fa-trash bigicon"></i></a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href="<?php echo base_url('update-pemilih/').$data['idpemilih'];?>" <?php echo ($data['status'] == 'sudah') ? 'disabled' : ''; ?> class="btn btn-primary"><i class="fa fa-upload bigicon"></i></a>
+                    <?php if($data['status'] === 'sudah') { ?>
+                        <span class="btn-btn-danger disabled"><i class="fa fa-trash bigicon"></i></span>
+                        &nbsp;&nbsp;&nbsp;
+                        <span class="btn-btn-primary disabled"><i class="fa fa-upload bigicon"></i></span>
+                    <?php } else { ?>
+                        <a href="<?php echo base_url('hapus-pemilih/').$data['idpemilih'];?>" <?php echo ($data['status'] == 'sudah') ? 'disabled' : ''; ?> class="btn btn-danger"><i class="fa fa-trash bigicon"></i></a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="<?php echo base_url('update-pemilih/').$data['idpemilih'];?>" <?php echo ($data['status'] == 'sudah') ? 'disabled' : ''; ?> class="btn btn-primary"><i class="fa fa-upload bigicon"></i></a>
+                    <?php } ?>
                     </td>
                     <?php $no++; ?>
                   </tr>
