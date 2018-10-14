@@ -61,7 +61,6 @@
                         <a href="<?php echo base_url('update-pemilih/').$data['idpemilih'];?>" <?php echo ($data['status'] == 'sudah') ? 'disabled' : ''; ?> class="btn btn-primary"><i class="fa fa-upload bigicon"></i></a>
                     <?php } ?>
                     </td>
-
                     <?php $no++; ?>
                   </tr>
                   <?php } } ?>

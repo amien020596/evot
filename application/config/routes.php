@@ -62,7 +62,7 @@ $route['update-pemilih/(:num)'] = 'admin/update_pemilih/$1';
 $route['kandidat-bem'] = 'admin/daftar_kandidat_bem';
 
 $route['kandidat-ketua'] = 'admin/valid_ketua_bem';
-$route['hitung-vote/(:any)/(:num)'] = 'admin/hitung_vote/$1/$2';
+$route['hitung-vote/(:any)/?(:num)?'] = 'admin/hitung_vote/$1/$2';
 $route['kandidat-senat'] = 'admin/daftar_kandidat_senat';
 $route['dashboard/logout'] = 'login/admlogout';
 $route['reset_data'] = 'admin/reset_data_table';
@@ -98,4 +98,3 @@ $route['update-senat/(:num)'] = 'admin/update_senat/$1';
 $route['update-kandidat-senat/(:num)'] = 'admin/valid_update_senat/$1';
 
 $route['monitoring'] = 'welcome/monitoring';
-

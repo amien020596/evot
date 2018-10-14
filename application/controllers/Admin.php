@@ -533,9 +533,10 @@ class Admin extends CI_Controller {
 					}
 			}
 	}
-	public function hitung_vote($view, $angkatan=null){
+	public function hitung_vote($view, $angkatan = null){
 		$data['view']=$view;
 
+		// die(var_dump($view));
 		// $angkatan = array(
 		// 	date('Y'), strval(date('Y')-1), strval(date('Y')-2)
 		// );
