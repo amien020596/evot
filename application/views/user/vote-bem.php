@@ -9,7 +9,9 @@
 	</div>
 	<div class="row text-center vote-container">
 	<form name="myForm" action="<?php
-				$list_senator = array("2015", "2016", "2017");
+				$list_senator = array(
+					date('Y'), strval(date('Y')-1), strval(date('Y')-2)
+				);
 				if (!in_array($angkatan, $list_senator)) {
 					echo base_url('user/review');
 				} else {

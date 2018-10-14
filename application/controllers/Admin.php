@@ -126,7 +126,10 @@ class Admin extends CI_Controller {
 		}else{
 			$data['error']="Data already Deleted";
 			$data['kandidat'] = $this->Admin_model->kandidat_bem();
+			$data['title'] = 'Daftar Kandidat BEM';
+			$this->load->view('admin/partials/header', $data);
 			$this->load->view('admin/daftar-kandidat-bem',$data);
+			$this->load->view('admin/partials/footer', $data);
 		}
 	}
 	//fungsi untuk kandidat ketua BEM
@@ -465,7 +468,10 @@ class Admin extends CI_Controller {
 		}else{
 			$data['error']="Data already Deleted";
 			$data['kandidat'] = $this->Admin_model->kandidat_senat();
+			$data['title'] = 'Daftar Kandidat Senat';
+			$this->load->view('admin/partials/header', $data);
 			$this->load->view('admin/daftar-kandidat-senat',$data);
+			$this->load->view('admin/partials/footer', $data);
 		}
 	}
 	public function update_senat($id=null){
@@ -575,7 +581,10 @@ class Admin extends CI_Controller {
 		}else{
 			$data['error']= "data tidak terhapus";
 			$data['pemilih'] = $this->Admin_model->daftar_pemilih();
+			$data['title'] = 'Daftar Pemilih';
+			$this->load->view('admin/partials/header', $data);
 			$this->load->view('admin/daftar_pemilih',$data);
+			$this->load->view('admin/partials/footer', $data);
 
 		}
 	}
@@ -588,7 +597,10 @@ class Admin extends CI_Controller {
 		}else{
 			$data['error']= "data tidak terhapus";
 			$data['pemilih'] = $this->Admin_model->daftar_pemilih();
+			$data['title'] = 'Daftar Pemilih';
+			$this->load->view('admin/partials/header', $data);
 			$this->load->view('admin/daftar_pemilih',$data);
+			$this->load->view('admin/partials/footer', $data);
 
 		}
 	}

@@ -40,8 +40,10 @@
 		</div>
 	</div>
 	<div class="col-vote col-md-3
-		<?php $list_senator = array("2013", "2014", "2012","2011", "2011");
-			if (in_array($angkatan, $list_senator)){
+		<?php $list_senator = array(
+					date('Y'), strval(date('Y')-1), strval(date('Y')-2)
+				);
+			if (!in_array($angkatan, $list_senator)){
 				echo "hidden";
 		}else{?>">
 		<div class="row text-center" style="background: rgba(166, 75, 154, 1);">
@@ -51,7 +53,7 @@
 		</div>
 		<div class="row ava-container">
 			<div class="col-md-12">
-				<img class="avatar" src="<?php echo base_url();?>assets/img/senat/<?php echo $angkatan;?>/senat<?php echo $senat->no_urut; ?>.png" name="senat<?php echo $senat->no_urut;?>">
+				<img class="avatar" src="<?php echo base_url('assets/img/senat/').$senat->foto;?>" name="senat<?php echo $senat->no_urut;?>">
 			</div>
 		</div>
 		<div class="row desc-container text-center">

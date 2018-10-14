@@ -16,7 +16,7 @@
 		</div>
 		<div class="row ava-container">
 			<div class="col-md-12">
-				<img class="avatar" src="<?php echo base_url();?>assets/img/senat/<?php echo $angkatan;?>/senat<?php echo $r->no_urut;?>.png" name="senat<?php echo $i;?>">
+				<img class="avatar" src="<?php echo base_url('assets/img/senat/').$r->foto;?>" name="senat<?php echo $i;?>">
 			</div>
 			<!-- <div class="col-md-6">
 				<img class="avatar" src="<?php echo base_url();?>assets/img/wakabem<?php echo $i;?>.png" name="wakabem<?php echo $i;?>">
